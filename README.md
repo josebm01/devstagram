@@ -31,6 +31,16 @@ sail npm run dev
 ```
 
 
+## Para utilizar el alias de Sail
+En MAC
+```
+nano ~/.zshrc
+```
+
+Agregar el siguiente comando
+```
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+```
 
 
 
