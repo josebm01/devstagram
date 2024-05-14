@@ -10,7 +10,7 @@
             <img src={{ asset('img/registrar.jpg') }} alt="Imagen de registro" class="rounded-lg">
         </div>
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
-            <form action="/crear-cuenta" method="POST"> 
+            <form action="{{ route('register') }}" method="POST" novalidate> 
                 @csrf
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">Nombre</label>
@@ -19,8 +19,12 @@
                         name="name"
                         type="text"
                         placeholder="Tu nombre"
-                        class="border p-3 w-full rounded-lg"
+                        class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror"
+                        value="{{ old('name') }}" {{-- Mantiene el valor actual en el input --}}
                     />
+                    @error('name')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{ str_replace('name', 'nombre', $message) }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">
@@ -30,8 +34,11 @@
                         name="username"
                         type="text"
                         placeholder="Tu nombre de usuario"
-                        class="border p-3 w-full rounded-lg"
+                        class="border p-3 w-full rounded-lg @error('username') border-red-500 @enderror"
                     />
+                    @error('username')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{ str_replace('username', 'nombre de usuario', $message) }}</p>
+                    @enderror
                 </div>
 
                
@@ -42,8 +49,11 @@
                         name="email"
                         type="email"
                         placeholder="Tu email de registro"
-                        class="border p-3 w-full rounded-lg"
+                        class="border p-3 w-full rounded-lg @error('email') border-red-500 @enderror"
                     />
+                    @error('email')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{ str_replace('email', 'correo', $message) }}</p>
+                    @enderror
                 </div>
                 
                 <div class="mb-5">
@@ -53,8 +63,11 @@
                         name="password"
                         type="password"
                         placeholder="Tu password de registro"
-                        class="border p-3 w-full rounded-lg"
+                        class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror"
                     />
+                    @error('password')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{ str_replace('password', 'contraseña', $message) }}</p>
+                    @enderror
                 </div>
                 
                 <div class="mb-5">
@@ -64,8 +77,11 @@
                         name="password_confirmation"
                         type="password"
                         placeholder="Repite password de registro"
-                        class="border p-3 w-full rounded-lg"
+                        class="border p-3 w-full rounded-lg @error('password_confirmation') border-red-500 @enderror"
                     />
+                    @error('password_confirmation')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{ str_replace('password_confirmation', 'contraseña', $message) }}</p>
+                    @enderror
                 </div>
 
                 <input 
