@@ -35,6 +35,7 @@
                         type="text"
                         placeholder="Tu nombre de usuario"
                         class="border p-3 w-full rounded-lg @error('username') border-red-500 @enderror"
+                        value="{{ old('username') }}" 
                     />
                     @error('username')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{ str_replace('username', 'nombre de usuario', $message) }}</p>
@@ -50,6 +51,7 @@
                         type="email"
                         placeholder="Tu email de registro"
                         class="border p-3 w-full rounded-lg @error('email') border-red-500 @enderror"
+                        value="{{ old('email') }}" 
                     />
                     @error('email')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{ str_replace('email', 'correo', $message) }}</p>
@@ -64,6 +66,7 @@
                         type="password"
                         placeholder="Tu password de registro"
                         class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror"
+                        value="{{ old('password') }}" 
                     />
                     @error('password')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{ str_replace('password', 'contraseña', $message) }}</p>
@@ -78,6 +81,7 @@
                         type="password"
                         placeholder="Repite password de registro"
                         class="border p-3 w-full rounded-lg @error('password_confirmation') border-red-500 @enderror"
+                        value="{{ old('password_confirmation') }}" 
                     />
                     @error('password_confirmation')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{ str_replace('password_confirmation', 'contraseña', $message) }}</p>

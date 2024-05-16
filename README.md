@@ -30,6 +30,7 @@ o con docker
 sail npm run dev 
 ```
 
+Nota: Si no se quiere usar docker simplemente no se utiliza sail en los comandos
 
 ## Para utilizar el alias de Sail
 En MAC
