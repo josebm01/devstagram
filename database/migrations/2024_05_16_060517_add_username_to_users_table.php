@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //* Agregando nuevos campos
-            $table->string('username');
+            $table->string('username')->unique(); // para que no haya valores duplicados
         });
     }
 
