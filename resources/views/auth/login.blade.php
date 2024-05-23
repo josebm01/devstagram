@@ -13,6 +13,10 @@
             <form method="POST" accept="{{ route('login') }}" novalidate> 
                 @csrf
                
+                @if (session('mensaje') )
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{ session('mensaje') }}</p>                    
+                @endif
+
                 <div class="mb-5">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">Email</label>
                     <input 
@@ -41,6 +45,11 @@
                     @error('password')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{ str_replace('password', 'contraseña', $message) }}</p>
                     @enderror
+                </div>
+
+                <div class="mb-5">
+                    <input type="checkbox" name="remember">
+                        <label  class="ml-2 text-gray-500 text-sm">Mantener mi sesión abierta</label>
                 </div>
                 
                 <input 
