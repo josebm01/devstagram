@@ -4,8 +4,11 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href={{ asset('css/app.css') }}>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        @stack('styles')
         <title>DevStagram - @yield('titulo')</title>
+        {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
         @vite('resources/css/app.css')
+        @vite('resources/js/app.js')
 
     </head>
     <body class="bg-gray-100">
@@ -26,7 +29,10 @@
                             </svg>
                         Crear</a>
 
-                        <a class="font-bold text-gray-600 text-sm" href="/">Hola: 
+                        <a 
+                            class="font-bold text-gray-600 text-sm" 
+                            href="{{ route('posts.index', auth()->user()->username) }}"
+                        >Hola: 
                             <span class="font-normal">
                                 {{ auth()->user()->username }}
                             </span>
@@ -35,7 +41,7 @@
                             @csrf
                             <button 
                                 type="submit" 
-                                class="font-bold uppercase text-gray-600 text-sm"
+                                class="font-bold uppercase text-xs text-white bg-red-500 rounded-md p-2"
                             >Cerrar sesión</button>
                         </form>
                     </nav>
