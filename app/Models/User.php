@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Like;
 use App\Models\Post;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -52,5 +53,10 @@ class User extends Authenticatable
     {
         // Relación uno a uno
     return $this->hasMany( Post::class, /* Se puede especificar la llave foránea */ );
+    }
+
+    public function likes()
+    {
+        return $this->hasMany( Like::class );
     }
 }

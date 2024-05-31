@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Like;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +17,23 @@ class Post extends Model
 
     public function user() 
     {
-        // mostrando solo ciertos campos
+        //* seleccionando solo ciertos campos
         return $this->belongsTo( User::class )->select(['name', 'username']);
+    }
+
+    public function comentarios()
+    {
+        return $this->hasMany( Comentario::class );
+    }
+
+    public function likes()
+    {
+        return $this->hasMany( Like::class );
+    }
+
+    public function checkLike( User $user ) 
+    {
+        //* verificando por medio de la relación likes si ya hay un usuario que dio like en la tabla
+        return $this->likes->contains('user_id', $user->id);
     }
 }
