@@ -29,7 +29,7 @@ class PostController extends Controller implements HasMiddleware
     public function index(User $user)
     {
         // paginación
-        $posts = Post::where('user_id', $user->id)->paginate(4);
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(4);
 
         // dd($posts);
 
